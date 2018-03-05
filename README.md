@@ -68,4 +68,19 @@ Example `tox.ini` supporting the TOXBUILD environment variable:
     commands = {env:TOXBUILD:./tests.sh --static-analysis}
 
 
+Example `tox.ini` supporting the TOXBUILD environment variable:
+
+    [tox]
+    envlist = py26,py27,py32,py33,py34,pypy,pypy3
+    skipsdist = {env:TOXBUILD:false}
+
+    [testenv]
+    whitelist_externals = true
+    deps =
+        -rrequirements_test_runner.txt
+        -rrequirements_static_analysis.txt
+        -rrequirements_test.txt
+    commands = {env:TOXBUILD:./tests.sh --static-analysis}
+
+
 For a full example, see the [`python-pypi-template`](https://github.com/themattrix/python-pypi-template) project, which uses this image.
